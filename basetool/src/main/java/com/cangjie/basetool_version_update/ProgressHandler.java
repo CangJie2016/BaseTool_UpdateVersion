@@ -1,4 +1,4 @@
-package com.cangjie.basetool.apk;
+package com.cangjie.basetool_version_update;
 
 
 import android.os.Handler;
