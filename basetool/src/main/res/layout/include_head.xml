@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_base_headArea"
+    android:background="@color/app_main_color"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <FrameLayout
+        android:id="@+id/fl_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:visibility="invisible"
+        >
+        <ImageView
+            android:id="@+id/iv_base_head_back"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_base_head_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <FrameLayout
+        android:id="@+id/fl_right_container"
+        android:layout_width="wrap_content"
+        android:minWidth="48dp"
+        android:layout_height="48dp"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="4dp"
+        >
+        <ImageButton
+            android:id="@+id/ib_base_head_right_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@mipmap/toolbar_icon_back"
+            android:visibility="invisible" />
+        <TextView
+            android:id="@+id/tv_base_head_right_button"
+            android:layout_width="wrap_content"
+            android:maxLength="6"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="4dp"
+            android:visibility="invisible"/>
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2px"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+
