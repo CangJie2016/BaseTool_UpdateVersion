@@ -1,1 +1,1 @@
-include ':app', ':basetool'
+include ':app', ':basetool_updateapp'
