@@ -1,8 +1,10 @@
 package com.zxw.basetool_updateapp;
 
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,10 +69,13 @@ public class DownLoadApkHelper {
                 try {
                     InputStream is = response.body().byteStream();
                     if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//判断SD卡是否挂载
-                        java.io.File foder = new java.io.File(Environment.getExternalStorageDirectory(), downloadLocalPath);
-                        java.io.File file = new java.io.File(foder, downloadLocalFileName);
+                        File foder = new File(Environment.getExternalStorageDirectory(), downloadLocalPath);
+                        Log.w("log", foder.getAbsolutePath());
+                        File file = new File(foder, downloadLocalFileName);
+                        Log.w("log", file.getAbsolutePath());
                         if (!foder.exists()) {
-                            foder.mkdirs();
+                            boolean mkdirs = foder.mkdirs();
+                            Log.w("log", "mkdirs" + mkdirs);
                         }
                         FileOutputStream fos = new FileOutputStream(file);
                         BufferedInputStream bis = new BufferedInputStream(is);
@@ -98,9 +103,7 @@ public class DownLoadApkHelper {
                 onDownloadApkListener.failure("更新失败");
             }
         });
-
     }
-
 
 
     public interface OnDownloadApkListener{
