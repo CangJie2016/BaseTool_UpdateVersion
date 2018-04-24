@@ -7,20 +7,19 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.io.File;
 
-/**
- * 作者：${MXQ} on 2017/2/10 18:07
- * 邮箱：1299242483@qq.com
- */
 public class InstallHelper {
     /**
      *
+     * @param provider "zxzs.ppgj.provider"
      * @param downloadLocalPath  xxx/
      * @param downloadLocalFileName  xxx.apk
-     * @param provider "zxzs.ppgj.provider"
+     * @param downloadDialog
      */
-    public static void installApk(Activity activity, String provider, String downloadLocalPath, String downloadLocalFileName) {
+    public static void installApk(Activity activity, String provider, String downloadLocalPath, String downloadLocalFileName, MaterialDialog downloadDialog) {
         File foder = new File(Environment.getExternalStorageDirectory(), downloadLocalPath);
         File file = new File(foder, downloadLocalFileName);
 
@@ -36,6 +35,8 @@ public class InstallHelper {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         }
+        if (downloadDialog != null && downloadDialog.isShowing())
+            downloadDialog.dismiss();
         activity.startActivity(intent);
         activity.finish();
     }

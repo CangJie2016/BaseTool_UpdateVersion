@@ -39,13 +39,16 @@ public class VersionUpdateHelper {
                         @Override
                         public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
                             download(mActivity, downUrl, baseUrl, downloadLocalPath, downloadLocalFileName, provider);
+                            if (dialog.isShowing())
+                                dialog.dismiss();
                         }
                     })
                     .onNegative(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                             listener.nextTime();
-                            dialog.dismiss();
+                            if (dialog.isShowing())
+                                dialog.dismiss();
                         }
                     })
                     .show();
@@ -62,7 +65,7 @@ public class VersionUpdateHelper {
             @Override
             public void downloadSuccess() {
                 downloadDialog.setContent("下载完成，正在安装");
-                InstallHelper.installApk(mActivity, provider, downloadLocalPath, downloadLocalFileName);
+                InstallHelper.installApk(mActivity, provider, downloadLocalPath, downloadLocalFileName, downloadDialog);
             }
 
             @Override
