@@ -17,19 +17,19 @@ public class VersionUpdateHelper {
 
 
     /**
+     * final String versionName = "1.0.0";
+     * String path =  "/WuXiDriver/";
+     * String file = "WuXiDriver" + versionName + ".apk";
      *
-     final String versionName = "1.0.0";
-     String path =  "/WuXiDriver/";
-     String file = "WuXiDriver" + versionName + ".apk";
      * @param listener callback
      */
 
-    public VersionUpdateHelper(final Activity mActivity, String title, String message,boolean isForce, final String provider,
-                               final String downUrl, final String baseUrl, final String downloadLocalPath, final String downloadLocalFileName, final OnVersionUpdateListener listener){
+    public VersionUpdateHelper(final Activity mActivity, String title, String message, boolean isForce, final String provider,
+                               final String downUrl, final String baseUrl, final String downloadLocalPath, final String downloadLocalFileName, final OnVersionUpdateListener listener) {
         mListener = listener;
-        if (isForce){
+        if (isForce) {
             download(mActivity, downUrl, baseUrl, downloadLocalPath, downloadLocalFileName, provider);
-        }else{
+        } else {
             tipsDialog = new MaterialDialog.Builder(mActivity)
                     .title(title)
                     .content(message)
@@ -71,6 +71,8 @@ public class VersionUpdateHelper {
             @Override
             public void failure(String s) {
                 mListener.downloadFailure(s);
+                if (downloadDialog != null && downloadDialog.isShowing())
+                    downloadDialog.dismiss();
             }
 
             @Override
@@ -85,6 +87,8 @@ public class VersionUpdateHelper {
             @Override
             public void sdCardError(String s) {
                 mListener.sdCardError(s);
+                if (downloadDialog != null && downloadDialog.isShowing())
+                    downloadDialog.dismiss();
             }
         });
     }
@@ -95,7 +99,9 @@ public class VersionUpdateHelper {
 //    }
     public interface OnVersionUpdateListener {
         void downloadFailure(String s);
+
         void sdCardError(String s);
+
         void nextTime();
     }
 }
