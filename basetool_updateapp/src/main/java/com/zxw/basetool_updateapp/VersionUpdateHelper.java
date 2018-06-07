@@ -55,7 +55,7 @@ public class VersionUpdateHelper {
         }
     }
 
-    private void download(final Activity mActivity, String downUrl, String baseUrl, final String downloadLocalPath, final String downloadLocalFileName, final String provider) {
+    public void download(final Activity mActivity, String downUrl, String baseUrl, final String downloadLocalPath, final String downloadLocalFileName, final String provider) {
         downloadDialog = new MaterialDialog.Builder(mActivity)
                 .title("正在下载")
                 .progress(false, 100, false)
