@@ -1,24 +1,14 @@
 package com.zxw.basetool_update;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Environment;
+import android.os.Bundle;
 import android.support.v13.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.util.LogWriter;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.zxw.basetool_updateapp.VersionUpdateHelper;
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
